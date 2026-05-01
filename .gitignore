@@ -1,0 +1,27 @@
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Power BI artifacts (don't publish working files / caches)
+*.pbix
+*.pbip.user
+.pbi/
+CacheStorage/
+LocalCache/
+*.tmp
+
+# Secrets
+*.env
+.env.*
+*.key
+*.pem
+credentials.json
