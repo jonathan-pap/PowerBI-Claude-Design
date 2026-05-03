@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 32" width="160" height="32" role="img" aria-label="Contoso">
+  <title>Contoso</title>
+  <!-- Background pill — use only when embedding on non-blue backgrounds -->
+  <!-- Remove the rect below if placing directly on a #0078D4 header zone -->
+  <rect x="0" y="0" width="160" height="32" rx="4" fill="#0078D4"/>
+  <!-- Mark: three ascending vertical bars (bar chart motif) — white on blue -->
+  <rect x="6"  y="14" width="5" height="16" rx="1" fill="#FFFFFF"/>
+  <rect x="13" y="8"  width="5" height="22" rx="1" fill="#FFFFFF"/>
+  <rect x="20" y="2"  width="5" height="28" rx="1" fill="#FFFFFF"/>
+  <!-- Logotype — white -->
+  <text x="32" y="22"
+        font-family="Segoe UI, Arial, Calibri, sans-serif"
+        font-size="18" font-weight="600"
+        fill="#FFFFFF">Contoso</text>
+</svg>

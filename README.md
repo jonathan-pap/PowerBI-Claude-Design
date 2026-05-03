@@ -17,6 +17,11 @@ PowerBI-Claude-Design/
 ├── svg-measures/           ← SVG-string DAX measures for inline visuals
 │   ├── examples/           ← 14 ready-to-adapt .dax files
 │   └── references/         ← SVG element reference + visual-specific patterns
+├── design-system/          ← Visual design system (3-30-300, themes, KPIs)
+│   ├── references/         ← colors / typography / layouts / components
+│   ├── iconography/        ← Fluent line icons + status dots (21 SVGs)
+│   └── wordmark/           ← Brand wordmark light/dark variants
+├── power-bi-test/          ← Working PBIP project (Contoso) for testing skill output
 └── datamodel/              ← Contoso sample dataset
     ├── ContosoDatacsv-10k.7z
     ├── ContosoDatacsv-10k/ ← 8 unpacked CSVs (~26 MB)
@@ -78,6 +83,27 @@ DAX measures that return `data:image/svg+xml;utf8,…` strings, rendered as imag
 - **14 reference DAX files in `examples/`**: sparkline, progress bar, dumbbell, bullet, overlapping bars, lollipop, IBCS bar, boxplot, jitter plot, waterfall, status pill, target bar, cache hit ratio
 - **4 reference docs in `references/`**: SVG elements, table/matrix patterns, image visual patterns, card/slicer patterns
 
+### `design-system/` — Visual Design System
+Standards and patterns for building professional, accessible reports — the visual layer that wraps everything the other skills produce. Adapts Microsoft Fluent principles for analytics:
+- **Core principles** — consistency, accessibility (WCAG AA / 7:1 contrast, colorblind-safe palette), hierarchy, "answer specific questions"
+- **3-30-300 Rule** + detail-gradient layout (KPIs → Charts → Tables, top-left → bottom-right)
+- **KPI design** — every KPI must answer *"is this good or bad?"* and *"is it getting better or worse?"* (target + gap, trend indicator, the "20% change test")
+- **Theme JSON** — wildcards before per-visual overrides, `ThemeDataColor` over hardcoded hex, semantic color usage
+- **"Subtract, don't add"** table design — remove gridlines / banding / decoration, sort by most important measure
+- **Anti-patterns** — *"Power BI Slop"*, bare KPI numbers, color overload, inconsistent spacing, missing alt text, slicer overload
+- **Checklists** — accessibility audit + report evaluation rubric (12 items)
+- **`references/`** — `colors.md` (palette + theme JSON), `typography.md` (Segoe UI scale + Format pane mappings), `layouts.md` (canvas dims, grid, 5 templates), `components.md` (KPI cards, slicers, matrices, headers, tooltips)
+
+#### `design-system/iconography/` — Fluent Line Icons
+20px viewBox, 1.5px stroke, `currentColor` so icons inherit semantic color from context:
+- **14 line icons** — arrow up/dn/flat, caret-dn, chev-lt/rt, check, info, warning, filter, search, refresh, grid, export
+- **3 status dots** (filled, semantic) — green / amber / red
+- **DAX SVG embedding pattern** — inline path data, single-quoted XML attrs, currentColor inheritance, icon + text lockups
+- **Accessibility rules** — never icon-only, `<title>` for standalone, 16px minimum render size, WCAG-compliant contrast against background
+
+#### `design-system/wordmark/` — Brand Wordmark
+Light + dark wordmark SVGs (Contoso placeholder) with anatomy, clear-space rules, dimensions, placement in Power BI page headers, and the DAX SVG embedding pattern for dynamic headers.
+
 ---
 
 ## Dependency map
@@ -88,9 +114,12 @@ tmdl-standards         ← syntax foundation
             ├── calc-groups
             ├── dax-udf
             └── svg-measures   (also draws on calc-groups + dax-udf)
+                    └── design-system   ← visual layer
+                            ├── iconography
+                            └── wordmark
 ```
 
-Read `tmdl-standards/SKILL.md` first. The other four assume those rules.
+Read `tmdl-standards/SKILL.md` first for the model layer; `design-system/SKILL.md` first for the visual layer.
 
 ---
 
@@ -154,6 +183,9 @@ Claude will return deployable TMDL blocks (with the `createOrReplace` wrapper) r
 | calc-groups | 1.5 | 2026-05-02 |
 | dax-udf | 2.0 | 2026-05-02 |
 | svg-measures | 2.0 | 2026-05-02 |
+| design-system | 2.2 | 2026-05-02 |
+| iconography | 2.0 | 2026-05-02 |
+| wordmark | 1.0 | 2026-05-02 |
 
 ---
 

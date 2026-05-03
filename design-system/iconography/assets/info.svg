@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" role="img" aria-label="Information">
+  <title>Information</title>
+  <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+  <path d="M10 9.5 L10 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <circle cx="10" cy="7" r="0.75" fill="currentColor"/>
+</svg>
