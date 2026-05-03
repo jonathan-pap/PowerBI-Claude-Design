@@ -1,6 +1,6 @@
 # PowerBI-Claude-Design
 
-A library of **Claude.ai skill packages** for authoring Power BI semantic models and reports — TMDL syntax, DAX measures, calculation groups, DAX UDFs, and inline SVG visual measures — plus a Contoso sample dataset and a working PBIP test project for trying everything out.
+A library of **Claude.ai skill packages** for authoring Power BI semantic models and reports — TMDL syntax, DAX measures, calculation groups, DAX UDFs, and a visual design system — plus a Contoso sample dataset and a working PBIP test project for trying everything out.
 
 Every skill outputs **plain text TMDL/DAX** ready to paste into Power BI Desktop, [Tabular Editor](https://tabulareditor.com/), or any TMDL-aware tool. No build step, no MCP required.
 
@@ -14,9 +14,6 @@ PowerBI-Claude-Design/
 ├── measures/               ← DAX measure patterns & naming
 ├── calc-groups/            ← Calculation groups in TMDL
 ├── dax-udf/                ← DAX User-Defined Functions
-├── svg-measures/           ← SVG-string DAX measures for inline visuals
-│   ├── examples/           ← 14 ready-to-adapt .dax files
-│   └── references/         ← SVG element reference + visual-specific patterns
 ├── design-system/          ← Visual design system (3-30-300, themes, KPIs)
 │   ├── references/         ← colors / typography / layouts / components
 │   ├── iconography/        ← Fluent line icons + status dots (21 SVGs)
@@ -72,17 +69,6 @@ Reusable typed functions stored in the semantic model:
   - **`AnyRef`** — pass column/table/measure references unevaluated (for `VALUES`, `SAMEPERIODLASTYEAR`, `TREATAS`)
 - Worked examples: `CircleArea`, `Mode`, `PriorYearValue`, `TodayAsDate`, `SplitString`
 
-### `svg-measures/` — SVG Visual Measures
-DAX measures that return `data:image/svg+xml;utf8,…` strings, rendered as images when `dataCategory: ImageUrl`:
-- The strict 4-region VAR pattern: CONFIG → NORMALIZATION → SVG ELEMENTS → ASSEMBLY
-- Axis normalization (raw values → fixed 0–100 SVG coordinate space)
-- `HASONEVALUE` guard against subtotal rows
-- The `<desc>` sort trick for sorting image columns by underlying value
-- `CONCATENATEX` for sparkline / multi-point assembly
-- Power BI SVG sandbox constraints — system fonts only, no external URLs, 32K char limit, single-quote XML attributes
-- **14 reference DAX files in `examples/`**: sparkline, progress bar, dumbbell, bullet, overlapping bars, lollipop, IBCS bar, boxplot, jitter plot, waterfall, status pill, target bar, cache hit ratio
-- **4 reference docs in `references/`**: SVG elements, table/matrix patterns, image visual patterns, card/slicer patterns
-
 ### `design-system/` — Visual Design System
 Standards and patterns for building professional, accessible reports — the visual layer that wraps everything the other skills produce. Adapts Microsoft Fluent principles for analytics:
 - **Core principles** — consistency, accessibility (WCAG AA / 7:1 contrast, colorblind-safe palette), hierarchy, "answer specific questions"
@@ -112,11 +98,11 @@ Light + dark wordmark SVGs (Contoso placeholder) with anatomy, clear-space rules
 tmdl-standards         ← syntax foundation
     └── measures       ← scalar DAX layer
             ├── calc-groups
-            ├── dax-udf
-            └── svg-measures   (also draws on calc-groups + dax-udf)
-                    └── design-system   ← visual layer
-                            ├── iconography
-                            └── wordmark
+            └── dax-udf
+
+design-system          ← visual layer (independent)
+    ├── iconography
+    └── wordmark
 ```
 
 Read `tmdl-standards/SKILL.md` first for the model layer; `design-system/SKILL.md` first for the visual layer.
@@ -139,7 +125,7 @@ Contoso 10k-row sample, ready to load into Power BI:
 | `orderrows.csv` | — | Order line items |
 | `contosoERD.png` | — | Visual ERD of the model |
 
-Both the unpacked CSVs (`datamodel/ContosoDatacsv-10k/`) and the original `.7z` archive are included. Use the CSVs to test calc-groups, time-intelligence patterns, currency conversion, and SVG measures end-to-end.
+Both the unpacked CSVs (`datamodel/ContosoDatacsv-10k/`) and the original `.7z` archive are included. Use the CSVs to test calc-groups, time-intelligence patterns, and currency conversion end-to-end.
 
 ---
 
@@ -147,16 +133,16 @@ Both the unpacked CSVs (`datamodel/ContosoDatacsv-10k/`) and the original `.7z` 
 
 1. **Create a Claude.ai Project** (or open an existing one).
 2. **Add the SKILL.md files as knowledge** — at minimum `tmdl-standards/SKILL.md`, plus whichever others you need.
-3. For `svg-measures`, also add the relevant files from `references/` and `examples/`.
+3. For `design-system`, also add the files in `references/`, `iconography/`, and `wordmark/`.
 4. **Prompt naturally**:
 
    > *Write a Year-over-Year growth measure for Sales Amount, following the TMDL and measures skills.*
    >
    > *Create a Time Intelligence calculation group with None / YTD / PY / PY YTD / vs PY % items.*
    >
-   > *Build an SVG bullet-chart measure for the Sales table, comparing Sales Amount to Sales Target.*
-   >
    > *Refactor these 12 individual time-intelligence measures into a single calc group.*
+   >
+   > *Audit this report against the design-system checklist and tell me what to fix.*
 
 Claude will return deployable TMDL blocks (with the `createOrReplace` wrapper) ready to paste into Power BI Desktop or Tabular Editor.
 
@@ -170,7 +156,6 @@ Claude will return deployable TMDL blocks (with the `createOrReplace` wrapper) r
 - **Verbose, prefixed measure names** — `$ Revenue Net of Discounts`, not `$ Rev ND`.
 - **`LASTDATE('Date'[Date])`** for rolling windows, never `TODAY()` (LASTDATE respects the visual filter).
 - **`DIVIDE(num, den, 0)`** instead of `/` for safe division.
-- **`HASONEVALUE` guard** on every SVG measure used in tables/matrices.
 
 ---
 
@@ -182,7 +167,6 @@ Claude will return deployable TMDL blocks (with the `createOrReplace` wrapper) r
 | measures | 2.0 | 2026-05-02 |
 | calc-groups | 1.5 | 2026-05-02 |
 | dax-udf | 2.0 | 2026-05-02 |
-| svg-measures | 2.0 | 2026-05-02 |
 | design-system | 2.2 | 2026-05-02 |
 | iconography | 2.0 | 2026-05-02 |
 | wordmark | 1.0 | 2026-05-02 |
@@ -191,4 +175,4 @@ Claude will return deployable TMDL blocks (with the `createOrReplace` wrapper) r
 
 ## License
 
-No license file is committed yet. Treat the contents as **all rights reserved** until a `LICENSE` is added — open an issue if you'd like to discuss reuse.
+[MIT](LICENSE) © Jonathan Papworth.

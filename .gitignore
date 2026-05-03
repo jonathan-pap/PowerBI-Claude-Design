@@ -11,6 +11,9 @@ $RECYCLE.BIN/
 .idea/
 *.swp
 
+# Office lock files
+~$*
+
 # Power BI artifacts (don't publish working files / caches)
 *.pbix
 *.pbip.user
@@ -18,6 +21,9 @@ $RECYCLE.BIN/
 CacheStorage/
 LocalCache/
 *.tmp
+
+# Skill folders excluded from publish
+svg-measures/
 
 # Secrets
 *.env
