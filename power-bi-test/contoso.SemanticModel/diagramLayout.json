@@ -1,0 +1,100 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 431.97766498248768
+          },
+          "nodeIndex": "Customer",
+          "nodeLineageTag": "7b434333-f698-4a4b-b0f5-afdd914a6865",
+          "size": {
+            "height": 606.19845577118076,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1016.4580449572579,
+            "y": 517.66405812766334
+          },
+          "nodeIndex": "Date",
+          "nodeLineageTag": "273d2494-c83a-42d3-8f8c-d72efe7dc7aa",
+          "size": {
+            "height": 570.42760813436053,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 268.44615311168025,
+            "y": 8.5479333370548147
+          },
+          "nodeIndex": "Product",
+          "nodeLineageTag": "788e06ac-419f-4210-be7d-232115f91c18",
+          "size": {
+            "height": 530.36425878112209,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 605.38926406003964,
+            "y": 477.34704737003966
+          },
+          "nodeIndex": "Sales",
+          "nodeLineageTag": "94d3ea3b-4449-4e27-903d-c961f1df5413",
+          "size": {
+            "height": 561.84260470152367,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 863.56602117910938,
+            "y": 3.9980572804913947
+          },
+          "nodeIndex": "Store",
+          "nodeLineageTag": "aca9499e-9ded-4d0a-835d-f1f04b9d2e92",
+          "size": {
+            "height": 392.25242839938574,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1161.8294499799283,
+            "y": 144.43786425990785
+          },
+          "nodeIndex": "Currency Exchange",
+          "nodeLineageTag": "8198f828-0eb7-4963-a015-b16bf3f86bfd",
+          "size": {
+            "height": 273.85663553937553,
+            "width": 234
+          },
+          "zIndex": 5
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 62.336089590424194,
+      "pinKeyFieldsToTop": true,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

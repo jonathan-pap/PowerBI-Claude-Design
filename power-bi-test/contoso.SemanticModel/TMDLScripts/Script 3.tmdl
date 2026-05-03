@@ -1,0 +1,20 @@
+createOrReplace
+
+	ref table _measures
+		/// Quantity × Net Price, line-level
+		measure 'Net Revenue' =
+				SUMX(
+					Sales,
+					Sales[Quantity] * Sales[Net Price]
+				)
+			formatString: "$#,0"
+			displayFolder: "_Base\\Sales"
+
+		/// Quantity × Unit Cost, line-level
+		measure 'Cost' =
+				SUMX(
+					Sales,
+					Sales[Quantity] * Sales[Unit Cost]
+				)
+			formatString: "$#,0"
+			displayFolder: "_Base\\Sales"

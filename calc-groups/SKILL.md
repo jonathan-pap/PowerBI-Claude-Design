@@ -301,3 +301,17 @@ Precedence  5 → Currency  (innermost)
 - [ ] Every group has a `None` item (`= SELECTEDMEASURE()`)
 - [ ] Rolling window items use `LASTDATE('Date'[Date])`, not `TODAY()`
 - [ ] Precedence order intentional: 20 → Scenario, 10 → Time, 5 → Currency
+
+---
+
+## Related References
+
+- **tmdl-standards/SKILL.md** — TMDL syntax ground rules: indentation, createOrReplace wrapper, property order
+- **measures/SKILL.md** — Base measures that calc group items operate on; naming and folder conventions
+- **dax-udf/SKILL.md** — UDFs that can be called from within calculationItem expressions
+- **svg-measures/SKILL.md** — SVG icon badges reflecting the active calc group selection (e.g. period label)
+
+---
+
+**Version:** 1.5
+**Last Updated:** 2026-05-02

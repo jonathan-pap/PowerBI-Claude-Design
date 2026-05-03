@@ -600,3 +600,17 @@ createOrReplace
 | `displayFolder` | Group in Field List | `"Key Metrics\Revenue"` |
 | `description` | Tooltip in Field List | `"Cumulative revenue YTD"` |
 | `isHidden` | Hide from Field List | `isHidden` (for helper measures) |
+
+---
+
+## Related References
+
+- **tmdl-standards/SKILL.md** — TMDL syntax ground rules: indentation, createOrReplace wrapper, property order
+- **calc-groups/SKILL.md** — When to replace individual Time Intelligence measures with a calc group
+- **dax-udf/SKILL.md** — When to extract repeated measure logic into a reusable typed function
+- **svg-measures/SKILL.md** — Wrapping scalar measure output in SVG strings for visual KPI display
+
+---
+
+**Version:** 2.0
+**Last Updated:** 2026-05-02

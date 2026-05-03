@@ -257,3 +257,17 @@ the TMDL declaration and in DAX references: `[Total Sales]`.
 | Measure shows error | Invalid table/column name | Wrap names with spaces in single quotes: `Sales[Order Date]` |
 | UDF won't evaluate in context | Wrong parameter mode | Use `Expr` when the argument must be re-evaluated inside CALCULATE |
 | Calc group format wrong | Hardcoded format string | Use `SELECTEDMEASUREFORMATSTRING()` unless format genuinely changes |
+
+---
+
+## Related References
+
+- **measures/SKILL.md** — DAX measure patterns, naming conventions, format strings, display folders
+- **calc-groups/SKILL.md** — Calculation group TMDL structure, calculationItem syntax, precedence
+- **dax-udf/SKILL.md** — DAX User-Defined Function syntax, parameter types (Val/Expr/AnyRef)
+- **svg-measures/SKILL.md** — SVG DAX measures, TMDL declaration patterns for image-type measures
+
+---
+
+**Version:** 3.0
+**Last Updated:** 2026-05-02

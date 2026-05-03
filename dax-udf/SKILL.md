@@ -228,3 +228,17 @@ Usage: `SplitString("apple,banana,cherry", ",")` → table with 3 rows.
 5. **Test edge cases** — BLANK values, empty tables, NULL strings.
 
 6. **Keep functions focused** — one purpose, one return type.
+
+---
+
+## Related References
+
+- **tmdl-standards/SKILL.md** — TMDL syntax ground rules: indentation, createOrReplace wrapper, property order
+- **measures/SKILL.md** — Measures that call UDFs; when to use a UDF vs inline DAX in a measure
+- **calc-groups/SKILL.md** — UDFs used inside calculationItem expressions for shared transformation logic
+- **svg-measures/SKILL.md** — UDFs for SVG string assembly (e.g. shared path builder, color picker functions)
+
+---
+
+**Version:** 2.0
+**Last Updated:** 2026-05-02
